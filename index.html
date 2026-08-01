@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Valuto — Pay like a Local</title>
+  <meta name="description" content="Valuto lets you pay local merchants abroad by scanning the QR codes they already use. No cash, no card fees, and you see the rate before you pay. Join the waitlist.">
+  <link rel="icon" type="image/webp" href="valuto-logo.webp">
+  <link rel="apple-touch-icon" href="valuto-logo.webp">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600..800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css?v=2">
+</head>
+<body>
+
+  <!-- ============ SVG defs: flags & icons ============ -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <defs>
+      <!-- Flags (simplified, decorative) -->
+      <symbol id="flag-ph" viewBox="0 0 20 14">
+        <rect width="20" height="7" fill="#0038a8"/><rect y="7" width="20" height="7" fill="#ce1126"/>
+        <path d="M0 0 L9 7 L0 14 Z" fill="#fff"/><circle cx="3.1" cy="7" r="1.5" fill="#fcd116"/>
+      </symbol>
+      <symbol id="flag-vn" viewBox="0 0 20 14">
+        <rect width="20" height="14" fill="#da251d"/>
+        <polygon points="10,3.8 10.9,6.1 13.4,6.1 11.4,7.6 12.1,10 10,8.5 7.9,10 8.6,7.6 6.6,6.1 9.1,6.1" fill="#ffff00"/>
+      </symbol>
+      <symbol id="flag-th" viewBox="0 0 20 14">
+        <rect width="20" height="14" fill="#f4f5f8"/>
+        <rect width="20" height="2.33" fill="#a51931"/><rect y="11.67" width="20" height="2.33" fill="#a51931"/>
+        <rect y="4.67" width="20" height="4.66" fill="#2d2a4a"/>
+      </symbol>
+      <symbol id="flag-kh" viewBox="0 0 20 14">
+        <rect width="20" height="14" fill="#032ea1"/><rect y="3.5" width="20" height="7" fill="#e00025"/>
+        <path d="M8 9 v-1.6 h.9 v-1 h.7 V5 h.8 v1.4 h.7 v1 h.9 V9 Z" fill="#fff"/>
+      </symbol>
+      <symbol id="flag-br" viewBox="0 0 20 14">
+        <rect width="20" height="14" fill="#009c3b"/>
+        <polygon points="10,1.6 18.4,7 10,12.4 1.6,7" fill="#ffdf00"/>
+        <circle cx="10" cy="7" r="2.7" fill="#002776"/>
+      </symbol>
+      <symbol id="flag-ar" viewBox="0 0 20 14">
+        <rect width="20" height="14" fill="#74acdf"/><rect y="4.67" width="20" height="4.66" fill="#fff"/>
+        <circle cx="10" cy="7" r="1.4" fill="#f6b40e"/>
+      </symbol>
+      <symbol id="flag-co" viewBox="0 0 20 14">
+        <rect width="20" height="7" fill="#fcd116"/><rect y="7" width="20" height="3.5" fill="#003893"/><rect y="10.5" width="20" height="3.5" fill="#ce1126"/>
+      </symbol>
+      <symbol id="flag-pe" viewBox="0 0 20 14">
+        <rect width="20" height="14" fill="#d91023"/><rect x="6.67" width="6.66" height="14" fill="#fff"/>
+      </symbol>
+      <symbol id="flag-bo" viewBox="0 0 20 14">
+        <rect width="20" height="4.67" fill="#d52b1e"/><rect y="4.67" width="20" height="4.66" fill="#f9e300"/><rect y="9.33" width="20" height="4.67" fill="#007934"/>
+      </symbol>
+      <symbol id="flag-id" viewBox="0 0 20 14">
+        <rect width="20" height="7" fill="#ce1126"/><rect y="7" width="20" height="7" fill="#fff"/>
+      </symbol>
+      <symbol id="flag-my" viewBox="0 0 20 14">
+        <rect width="20" height="14" fill="#fff"/>
+        <rect y="2" width="20" height="2" fill="#cc0001"/><rect y="6" width="20" height="2" fill="#cc0001"/><rect y="10" width="20" height="2" fill="#cc0001"/><rect y="0" width="20" height="2" fill="#cc0001"/>
+        <rect width="10" height="8" fill="#010066"/>
+        <circle cx="3.6" cy="4" r="2" fill="#ffcc00"/><circle cx="4.5" cy="4" r="1.7" fill="#010066"/>
+        <circle cx="7.2" cy="4" r="1" fill="#ffcc00"/>
+      </symbol>
+      <symbol id="flag-sg" viewBox="0 0 20 14">
+        <rect width="20" height="7" fill="#ed2939"/><rect y="7" width="20" height="7" fill="#fff"/>
+        <circle cx="4.6" cy="3.5" r="2.1" fill="#fff"/><circle cx="5.5" cy="3.5" r="1.9" fill="#ed2939"/>
+      </symbol>
+      <symbol id="flag-cl" viewBox="0 0 20 14">
+        <rect width="20" height="7" fill="#fff"/><rect y="7" width="20" height="7" fill="#d52b1e"/>
+        <rect width="6.67" height="7" fill="#0039a6"/><circle cx="3.33" cy="3.5" r="1.1" fill="#fff"/>
+      </symbol>
+      <symbol id="flag-ec" viewBox="0 0 20 14">
+        <rect width="20" height="7" fill="#ffdd00"/><rect y="7" width="20" height="3.5" fill="#034ea2"/><rect y="10.5" width="20" height="3.5" fill="#ed1c24"/>
+        <circle cx="10" cy="7" r="1.8" fill="#d9b23c"/>
+      </symbol>
+      <symbol id="flag-mx" viewBox="0 0 20 14">
+        <rect width="20" height="14" fill="#fff"/>
+        <rect width="6.67" height="14" fill="#006847"/><rect x="13.33" width="6.67" height="14" fill="#ce1126"/>
+        <circle cx="10" cy="7" r="1.6" fill="#8a6d3b"/>
+      </symbol>
+
+      <!-- UI icons -->
+      <symbol id="i-check" viewBox="0 0 20 20">
+        <path d="M4 10.5 L8.2 14.7 L16 6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+      </symbol>
+      <symbol id="i-cross" viewBox="0 0 20 20">
+        <path d="M5.5 5.5 L14.5 14.5 M14.5 5.5 L5.5 14.5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
+      </symbol>
+      <symbol id="i-qr" viewBox="0 0 24 24">
+        <path d="M4 4h6v6H4zM14 4h6v6h-6zM4 14h6v6H4z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+        <path d="M6.5 6.5h1v1h-1zM16.5 6.5h1v1h-1zM6.5 16.5h1v1h-1zM14 14h2.5v2.5H14zM17.5 17.5H20V20h-2.5zM14 18h2v2h-2zM18 14h2v2h-2z" fill="currentColor" stroke="none"/>
+      </symbol>
+      <symbol id="i-chevron-down" viewBox="0 0 24 24">
+        <path d="M5 9l7 7 7-7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+      </symbol>
+      <symbol id="i-dollar" viewBox="0 0 24 24">
+        <path d="M12 2.8v18.4M16.4 7.2c-.7-1.4-2.3-2.2-4.3-2.2-2.4 0-4.1 1.3-4.1 3.1 0 4.4 8.6 2.2 8.6 6.7 0 1.9-1.8 3.2-4.4 3.2-2.1 0-3.8-.9-4.6-2.5" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/>
+      </symbol>
+      <symbol id="i-eye" viewBox="0 0 24 24">
+        <path d="M2.5 12C4.4 8 7.9 5.5 12 5.5S19.6 8 21.5 12c-1.9 4-5.4 6.5-9.5 6.5S4.4 16 2.5 12Z" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"/>
+        <circle cx="12" cy="12" r="3.1" fill="none" stroke="currentColor" stroke-width="1.9"/>
+      </symbol>
+      <symbol id="i-card" viewBox="0 0 24 24">
+        <rect x="2.6" y="5.4" width="18.8" height="13.2" rx="2.6" fill="none" stroke="currentColor" stroke-width="1.9"/>
+        <path d="M2.6 9.8h18.8" fill="none" stroke="currentColor" stroke-width="1.9"/>
+      </symbol>
+      <symbol id="i-db" viewBox="0 0 24 24">
+        <ellipse cx="12" cy="5.8" rx="7.5" ry="2.9" fill="none" stroke="currentColor" stroke-width="1.9"/>
+        <path d="M4.5 5.8v12.4c0 1.6 3.4 2.9 7.5 2.9s7.5-1.3 7.5-2.9V5.8" fill="none" stroke="currentColor" stroke-width="1.9"/>
+        <path d="M4.5 12c0 1.6 3.4 2.9 7.5 2.9s7.5-1.3 7.5-2.9" fill="none" stroke="currentColor" stroke-width="1.9"/>
+      </symbol>
+      <symbol id="i-shield" viewBox="0 0 24 24">
+        <path d="M12 2.8 19.5 5.8v5.3c0 4.6-3 8.6-7.5 10.1-4.5-1.5-7.5-5.5-7.5-10.1V5.8Z" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"/>
+        <path d="M8.8 11.8l2.3 2.3 4.2-4.2" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>
+      </symbol>
+      <symbol id="i-cash" viewBox="0 0 24 24">
+        <rect x="2.6" y="6.2" width="18.8" height="11.6" rx="2.2" fill="none" stroke="currentColor" stroke-width="1.9"/>
+        <circle cx="12" cy="12" r="2.6" fill="none" stroke="currentColor" stroke-width="1.9"/>
+        <path d="M6.1 12h.01M17.9 12h.01" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/>
+      </symbol>
+
+      <!-- Social icons -->
+      <symbol id="s-x" viewBox="0 0 24 24">
+        <path d="M18.24 2.25h3.31l-7.23 8.26 8.5 11.24h-6.66l-5.21-6.82-5.97 6.82H1.67l7.73-8.84L1.25 2.25h6.83l4.71 6.23zm-1.16 17.52h1.83L7.08 4.13H5.12z" fill="currentColor"/>
+      </symbol>
+      <symbol id="s-instagram" viewBox="0 0 24 24">
+        <rect x="3" y="3" width="18" height="18" rx="5.2" fill="none" stroke="currentColor" stroke-width="2"/>
+        <circle cx="12" cy="12" r="4.2" fill="none" stroke="currentColor" stroke-width="2"/>
+        <circle cx="17.2" cy="6.8" r="1.3" fill="currentColor"/>
+      </symbol>
+      <symbol id="s-tiktok" viewBox="0 0 24 24">
+        <path d="M13.8 2h2.7c.25 1.9 1.5 3.3 3.5 3.6v2.8c-1.3 0-2.5-.4-3.5-1.1v6.9c0 3.4-2.7 5.8-5.9 5.8-3.1 0-5.6-2.3-5.6-5.1 0-3.2 2.7-5.6 6-5.4v2.9c-1.7-.3-3.2.8-3.2 2.5 0 1.7 1.4 3 3 3 1.7 0 3-1.3 3-3.3z" fill="currentColor"/>
+      </symbol>
+      <symbol id="s-youtube" viewBox="0 0 24 24">
+        <path fill-rule="evenodd" d="M22 12c0-2.2-.2-3.8-.5-4.8-.3-.9-1-1.6-1.9-1.8C17.9 5 12 5 12 5s-5.9 0-7.6.4c-.9.2-1.6.9-1.9 1.8C2.2 8.2 2 9.8 2 12s.2 3.8.5 4.8c.3.9 1 1.6 1.9 1.8C6.1 19 12 19 12 19s5.9 0 7.6-.4c.9-.2 1.6-.9 1.9-1.8.3-1 .5-2.6.5-4.8zM10 8.8l5.7 3.2L10 15.2z" fill="currentColor"/>
+      </symbol>
+      <symbol id="s-facebook" viewBox="0 0 24 24">
+        <path d="M13.5 21.5v-7.2h2.6l.5-3.1h-3.1V9.1c0-.9.3-1.6 1.7-1.6h1.5V4.7c-.3 0-1.2-.1-2.2-.1-2.3 0-3.8 1.4-3.8 3.9v2.7H8v3.1h2.7v7.2z" fill="currentColor"/>
+      </symbol>
+      <symbol id="s-threads" viewBox="0 0 24 24">
+        <path d="M12.2 22c-3.1 0-5.5-1.1-7-3.1C3.9 17.1 3.2 14.7 3.2 12c0-2.7.7-5.1 2-6.9 1.5-2 3.9-3.1 7-3.1 2.9 0 5.2 1 6.7 2.8l-1.7 1.4c-1.1-1.4-2.8-2-4.9-2-2.4 0-4.2.8-5.3 2.3-1 1.4-1.5 3.3-1.5 5.5s.5 4.1 1.5 5.5c1.1 1.5 2.9 2.3 5.3 2.3 2.6 0 4.3-1.2 4.3-2.9 0-1.1-.7-1.9-1.9-2.4-.1 1-.4 1.8-1 2.4-.7.8-1.8 1.2-3 1.2-2 0-3.5-1.2-3.5-3 0-1.9 1.6-3.1 4-3.1.5 0 1 0 1.5.1 0-1.2-.7-1.9-1.9-1.9-1 0-1.7.3-2.1 1l-1.9-.9c.8-1.4 2.2-2.2 4-2.2 2.6 0 4.1 1.6 4.1 4.3v.3c2.1.7 3.4 2.1 3.4 4.1 0 2.9-2.6 5.2-6.1 5.2zm-.4-6.6c-1.2 0-1.9.4-1.9 1.1 0 .7.6 1.1 1.5 1.1 1.2 0 1.9-.6 2-2-.5-.1-1-.2-1.6-.2z" fill="currentColor"/>
+      </symbol>
+    </defs>
+  </svg>
+
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- ============ Header ============ -->
+  <header class="site-header" data-header>
+    <div class="header-inner">
+      <a class="wordmark" href="#top" aria-label="Valuto — home">
+        <img class="wordmark-u" src="valuto-logo.webp" alt="" width="30" height="30">
+        <span>Valuto</span>
+      </a>
+      <nav class="main-nav" aria-label="Main">
+        <a href="#compare">The receipts</a>
+        <a href="#how">How it works</a>
+        <a href="#where">Where it works</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+      <div class="header-actions">
+        <a class="btn btn-coral btn-small" href="#join">Join the waitlist</a>
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="mobile-nav" data-nav-toggle>
+          <span class="visually-hidden">Menu</span>
+          <span class="nav-toggle-bars" aria-hidden="true"><span></span><span></span></span>
+        </button>
+      </div>
+    </div>
+    <nav class="mobile-nav" id="mobile-nav" aria-label="Main menu" hidden>
+      <a href="#compare">The receipts</a>
+      <a href="#how">How it works</a>
+      <a href="#where">Where it works</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+  </header>
+
+  <main id="main">
+
+    <!-- ============ 1. Hero — one line, full screen ============ -->
+    <section class="hero" id="top">
+      <div class="hero-bg" aria-hidden="true">
+        <svg class="hero-qr hero-qr-1" viewBox="0 0 24 24"><use href="#i-qr"/></svg>
+        <svg class="hero-qr hero-qr-2" viewBox="0 0 24 24"><use href="#i-qr"/></svg>
+      </div>
+      <div class="hero-inner">
+        <h1 class="hero-title">Pay like<br>a <span class="hero-title-grad">Local.</span></h1>
+        <p class="hero-sub">
+          One balance in dollars. Every QR code abroad.
+          The rate on the screen before you tap.
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-coral btn-large" href="#join">Join the waitlist</a>
+        </div>
+        <p class="ribbon">First 1,000 members get their first 10 payments free.</p>
+      </div>
+      <a class="scroll-cue" href="#story" aria-label="Scroll to read more">
+        <svg aria-hidden="true"><use href="#i-chevron-down"/></svg>
+      </a>
+    </section>
+
+    <!-- ============ Narrative scenes (scroll-driven) ============ -->
+    <div id="story">
+
+      <!-- Scene A — the problem -->
+      <section class="scene" data-scene style="--scenes: 3" aria-label="Every time you pay abroad, your bank takes a quiet cut of 3 to 6 percent, hidden in the exchange rate">
+        <div class="scene-sticky">
+          <div class="scene-copy">
+            <p class="scene-line" data-at="0.05">Every time you pay abroad,</p>
+            <p class="scene-line" data-at="0.38">your bank takes a quiet cut.</p>
+            <p class="scene-line scene-line-small" data-at="0.7">3–6%, hidden in the exchange rate.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Scene B — where you paid it (flying price tags) -->
+      <section class="scene scene-tags" data-scene style="--scenes: 4" aria-label="You have paid it at coffee counters, in night markets, at hotel desks, on the back of a scooter — without ever seeing it happen">
+        <div class="scene-sticky">
+          <div class="scene-tagfield" aria-hidden="true">
+            <span class="price-tag" data-at="0.12"><span class="flag"><svg><use href="#flag-th"/></svg></span>145 ฿</span>
+            <span class="price-tag" data-at="0.24"><span class="flag"><svg><use href="#flag-vn"/></svg></span>76,000 ₫</span>
+            <span class="price-tag" data-at="0.36"><span class="flag"><svg><use href="#flag-ph"/></svg></span>₱290</span>
+            <span class="price-tag" data-at="0.48"><span class="flag"><svg><use href="#flag-br"/></svg></span>R$ 27</span>
+            <span class="price-tag" data-at="0.58"><span class="flag"><svg><use href="#flag-ar"/></svg></span>AR$ 6.750</span>
+            <span class="price-tag" data-at="0.66"><span class="flag"><svg><use href="#flag-kh"/></svg></span>16,400 ៛</span>
+          </div>
+          <div class="scene-copy">
+            <p class="scene-line" data-at="0.05">You&rsquo;ve paid it</p>
+            <p class="scene-line scene-line-place" data-at="0.2">at coffee counters</p>
+            <p class="scene-line scene-line-place" data-at="0.32">in night markets</p>
+            <p class="scene-line scene-line-place" data-at="0.44">at hotel desks</p>
+            <p class="scene-line scene-line-place" data-at="0.56">on the back of a scooter</p>
+            <p class="scene-line" data-at="0.74">&mdash; without ever seeing it happen.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Scene C — the turn -->
+      <section class="scene scene-turn" data-scene style="--scenes: 4" aria-label="So we built something different. Scan the same QR code the locals use. Pay in their currency, from your dollars. See the rate and the fee before you tap. Valuto — pay like a local">
+        <div class="scene-sticky">
+          <div class="scene-copy">
+            <p class="scene-line" data-at="0.05">So we built something different.</p>
+            <ul class="scene-beats">
+              <li class="scene-beat" data-at="0.28">
+                <svg class="scene-beat-icon" aria-hidden="true"><use href="#i-qr"/></svg>
+                Scan the same QR code the locals use.
+              </li>
+              <li class="scene-beat" data-at="0.44">
+                <svg class="scene-beat-icon" aria-hidden="true"><use href="#i-dollar"/></svg>
+                Pay in their currency, from your dollars.
+              </li>
+              <li class="scene-beat" data-at="0.6">
+                <svg class="scene-beat-icon" aria-hidden="true"><use href="#i-eye"/></svg>
+                See the rate and the fee before you tap.
+              </li>
+            </ul>
+            <p class="scene-reveal" data-at="0.8">
+              <img class="scene-reveal-mark" src="valuto-logo.webp" alt="" width="48" height="48">
+              Valuto. Pay like a Local.
+            </p>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- ============ 2. The receipts (signature widget) ============ -->
+    <section class="section" id="compare" aria-labelledby="compare-title">
+      <div class="container container-mid">
+        <p class="eyebrow reveal">The receipts</p>
+        <h2 class="section-title reveal" id="compare-title">Same coffee. Two receipts.</h2>
+        <p class="section-sub reveal">Pick a destination and a purchase — then read what each card actually charges.</p>
+
+        <div class="hero-widget reveal" data-widget>
+          <div class="widget-controls">
+            <div class="chip-row" role="group" aria-label="Pick a destination">
+              <button class="chip is-selected" type="button" data-dest="vn" aria-pressed="true">
+                <span class="flag"><svg aria-hidden="true"><use href="#flag-vn"/></svg></span>Vietnam
+              </button>
+              <button class="chip" type="button" data-dest="ph" aria-pressed="false">
+                <span class="flag"><svg aria-hidden="true"><use href="#flag-ph"/></svg></span>Philippines
+              </button>
+              <button class="chip" type="button" data-dest="br" aria-pressed="false">
+                <span class="flag"><svg aria-hidden="true"><use href="#flag-br"/></svg></span>Brazil
+              </button>
+              <button class="chip" type="button" data-dest="co" aria-pressed="false">
+                <span class="flag"><svg aria-hidden="true"><use href="#flag-co"/></svg></span>Colombia
+              </button>
+              <button class="chip" type="button" data-dest="ar" aria-pressed="false">
+                <span class="flag"><svg aria-hidden="true"><use href="#flag-ar"/></svg></span>Argentina
+              </button>
+              <button class="chip" type="button" data-dest="pe" aria-pressed="false">
+                <span class="flag"><svg aria-hidden="true"><use href="#flag-pe"/></svg></span>Peru
+              </button>
+            </div>
+            <div class="chip-row" role="group" aria-label="Pick a purchase">
+              <button class="chip is-selected" type="button" data-amount="3" data-item="Coffee" aria-pressed="true">Coffee · $3</button>
+              <button class="chip" type="button" data-amount="25" data-item="Dinner" aria-pressed="false">Dinner · $25</button>
+              <button class="chip" type="button" data-amount="80" data-item="Hotel night" aria-pressed="false">Hotel night · $80</button>
+            </div>
+          </div>
+
+          <div class="receipts" data-receipts>
+            <div class="receipt-shadow">
+              <article class="receipt receipt-bank" aria-label="What your bank card charges">
+                <p class="receipt-head" style="--i:0">Your bank card</p>
+                <ul class="receipt-lines">
+                  <li style="--i:1"><span data-r="item">Coffee — Hanoi</span><span class="receipt-num" data-r="local">76,200 ₫</span></li>
+                  <li style="--i:2"><span>Mid-market value</span><span class="receipt-num" data-r="mid-bank">$3.00</span></li>
+                  <li class="receipt-bad" style="--i:3">
+                    <span>FX markup (2.5%)<small>hidden in the rate</small></span>
+                    <span class="receipt-num" data-r="markup">+$0.08</span>
+                  </li>
+                  <li class="receipt-bad" style="--i:4">
+                    <span>Foreign transaction fee (3%)<small>on your statement later</small></span>
+                    <span class="receipt-num" data-r="txnfee">+$0.09</span>
+                  </li>
+                </ul>
+                <p class="receipt-total" style="--i:5">
+                  <span>Charged to you</span>
+                  <span class="receipt-num" data-r="bank-total">$3.17</span>
+                </p>
+                <p class="receipt-tag receipt-tag-bad" style="--i:6" data-r="bank-tag">5.5% over the real price</p>
+              </article>
+            </div>
+
+            <div class="receipt-shadow">
+              <article class="receipt receipt-valuto" aria-label="What Valuto charges">
+                <p class="receipt-head receipt-head-valuto" style="--i:1">
+                  <svg class="receipt-qr" aria-hidden="true"><use href="#i-qr"/></svg>Valuto
+                </p>
+                <ul class="receipt-lines">
+                  <li style="--i:2"><span data-r="item">Coffee — Hanoi</span><span class="receipt-num" data-r="local">76,200 ₫</span></li>
+                  <li style="--i:3"><span>Mid-market value</span><span class="receipt-num" data-r="mid-valuto">$3.00</span></li>
+                  <li style="--i:4">
+                    <span>Valuto fee (2%)<small>shown before you confirm</small></span>
+                    <span class="receipt-num" data-r="vfee">+$0.06</span>
+                  </li>
+                </ul>
+                <p class="receipt-total" style="--i:5">
+                  <span>Charged to you</span>
+                  <span class="receipt-num" data-r="valuto-total">$3.06</span>
+                </p>
+                <p class="receipt-tag receipt-tag-good" style="--i:6">
+                  You keep <span data-r="saved">$0.11</span>
+                </p>
+              </article>
+            </div>
+          </div>
+
+          <p class="trip-line">
+            Over a two-week trip (~$1,200 spent), that&rsquo;s about
+            <strong data-r="trip">$42</strong> that stays yours.
+          </p>
+          <p class="widget-note">Illustrative rates. Bank costs vary by card — typically 3–6% all-in.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 3. The real cost ============ -->
+    <section class="section" aria-labelledby="cost-title">
+      <div class="container">
+        <p class="eyebrow reveal">The math nobody shows you</p>
+        <h2 class="section-title reveal" id="cost-title">The real cost of a $2 coffee</h2>
+        <p class="section-sub reveal">Four ways to pay for the same small purchase abroad.</p>
+
+        <div class="table-scroll reveal" role="region" aria-label="Cost comparison of payment methods" tabindex="0">
+          <table class="cost-table">
+            <thead>
+              <tr>
+                <th scope="col"><span class="visually-hidden">Comparison</span></th>
+                <th scope="col">Bank card</th>
+                <th scope="col">Airport exchange</th>
+                <th scope="col">ATM withdrawal</th>
+                <th scope="col" class="col-valuto">Valuto</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Typical all-in cost</th>
+                <td>3–6%</td>
+                <td>8–12%</td>
+                <td>5–7% + ATM fee</td>
+                <td class="col-valuto"><strong>~2%</strong></td>
+              </tr>
+              <tr>
+                <th scope="row">Rate shown before you pay</th>
+                <td><svg class="cell-icon icon-no" aria-hidden="true"><use href="#i-cross"/></svg>No</td>
+                <td>Sometimes</td>
+                <td><svg class="cell-icon icon-no" aria-hidden="true"><use href="#i-cross"/></svg>No</td>
+                <td class="col-valuto"><svg class="cell-icon icon-yes" aria-hidden="true"><use href="#i-check"/></svg><strong>Yes</strong></td>
+              </tr>
+              <tr>
+                <th scope="row">Works at small local merchants</th>
+                <td>Rarely</td>
+                <td>Cash only</td>
+                <td>Cash only</td>
+                <td class="col-valuto"><svg class="cell-icon icon-yes" aria-hidden="true"><use href="#i-check"/></svg><strong>Yes</strong></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p class="aside-line reveal">
+          Most of what you lose isn&rsquo;t a fee with a name on it. It&rsquo;s the exchange
+          rate — quietly a few percent worse than the real one.
+        </p>
+      </div>
+    </section>
+
+    <!-- ============ 4. How it works ============ -->
+    <section class="section section-tinted" id="how" aria-labelledby="how-title">
+      <div class="container">
+        <p class="eyebrow reveal">Three steps</p>
+        <h2 class="section-title reveal" id="how-title">How it works</h2>
+        <ol class="steps">
+          <li class="step-card reveal">
+            <span class="step-num" aria-hidden="true">1</span>
+            <h3>Add funds</h3>
+            <p>Top up in dollars or euros from your bank, card, or Apple&nbsp;Pay.</p>
+          </li>
+          <li class="step-card reveal">
+            <span class="step-num" aria-hidden="true">2</span>
+            <h3>Scan any local QR code</h3>
+            <p>The one already taped to the counter. Nothing for the merchant to install.</p>
+          </li>
+          <li class="step-card reveal">
+            <span class="step-num" aria-hidden="true">3</span>
+            <h3>Pay in their currency</h3>
+            <p>They&rsquo;re paid instantly, in local money. You see the rate and fee before you confirm.</p>
+          </li>
+        </ol>
+
+        <div class="app-strip reveal reveal-stagger">
+          <figure class="app-shot">
+            <div class="app-frame">
+              <img src="app-mainpage.png" loading="lazy" width="1080" height="2400"
+                   alt="Valuto home screen: a $1,240.50 balance shown as roughly 31 million Vietnamese dong, with a Scan to pay button and recent QR payments at local street food places">
+            </div>
+            <figcaption>One balance, in dollars</figcaption>
+          </figure>
+          <figure class="app-shot">
+            <div class="app-frame">
+              <img src="app-paymentpage.png" loading="lazy" width="1080" height="2400"
+                   alt="Valuto confirm payment screen: 50,000 dong at Phở Hòa, you'll pay $2.22, with the exchange rate and fee itemised before paying">
+            </div>
+            <figcaption>The rate and fee, before you tap</figcaption>
+          </figure>
+          <figure class="app-shot">
+            <div class="app-frame">
+              <img src="app-paymentconfirmedpage.png" loading="lazy" width="1080" height="2400"
+                   alt="Valuto payment confirmed screen: paid $2.22 to Phở Hòa, with the local amount and new balance">
+            </div>
+            <figcaption>They&rsquo;re paid. You&rsquo;re done.</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 5. Where it works ============ -->
+    <section class="section" id="where" aria-labelledby="where-title">
+      <div class="container">
+        <p class="eyebrow reveal">Coverage</p>
+        <h2 class="section-title reveal" id="where-title">Where it works</h2>
+
+        <h3 class="country-group-title reveal">Live at launch</h3>
+        <ul class="country-grid">
+          <li class="country-card reveal">
+            <span class="flag flag-lg"><svg aria-hidden="true"><use href="#flag-vn"/></svg></span>
+            <span class="country-name">Vietnam</span><span class="country-meta">₫ · VietQR</span>
+            <span class="pill pill-live">Live at launch</span>
+          </li>
+          <li class="country-card reveal">
+            <span class="flag flag-lg"><svg aria-hidden="true"><use href="#flag-ph"/></svg></span>
+            <span class="country-name">Philippines</span><span class="country-meta">₱ · QR Ph</span>
+            <span class="pill pill-live">Live at launch</span>
+          </li>
+          <li class="country-card reveal">
+            <span class="flag flag-lg"><svg aria-hidden="true"><use href="#flag-br"/></svg></span>
+            <span class="country-name">Brazil</span><span class="country-meta">R$ · Pix</span>
+            <span class="pill pill-live">Live at launch</span>
+          </li>
+          <li class="country-card reveal">
+            <span class="flag flag-lg"><svg aria-hidden="true"><use href="#flag-co"/></svg></span>
+            <span class="country-name">Colombia</span><span class="country-meta">COP · QR payments</span>
+            <span class="pill pill-live">Live at launch</span>
+          </li>
+          <li class="country-card reveal">
+            <span class="flag flag-lg"><svg aria-hidden="true"><use href="#flag-ar"/></svg></span>
+            <span class="country-name">Argentina</span><span class="country-meta">AR$ · Mercado Pago</span>
+            <span class="pill pill-live">Live at launch</span>
+          </li>
+          <li class="country-card reveal">
+            <span class="flag flag-lg"><svg aria-hidden="true"><use href="#flag-pe"/></svg></span>
+            <span class="country-name">Peru</span><span class="country-meta">S/ · QR payments</span>
+            <span class="pill pill-live">Live at launch</span>
+          </li>
+        </ul>
+
+        <h3 class="country-group-title reveal">Coming soon</h3>
+        <ul class="country-grid">
+          <li class="country-card country-card-soon reveal">
+            <span class="flag flag-lg"><svg aria-hidden="true"><use href="#flag-th"/></svg></span>
+            <span class="country-name">Thailand</span><span class="country-meta">฿ · PromptPay</span>
+            <span class="pill pill-soon">Coming soon</span>
+          </li>
+          <li class="country-card country-card-soon reveal">
+            <span class="flag flag-lg"><svg aria-hidden="true"><use href="#flag-kh"/></svg></span>
+            <span class="country-name">Cambodia</span><span class="country-meta">៛ · KHQR</span>
+            <span class="pill pill-soon">Coming soon</span>
+          </li>
+          <li class="country-card country-card-soon reveal">
+            <span class="flag flag-lg"><svg aria-hidden="true"><use href="#flag-id"/></svg></span>
+            <span class="country-name">Indonesia</span><span class="country-meta">Rp · QRIS</span>
+            <span class="pill pill-soon">Coming soon</span>
+          </li>
+          <li class="country-card country-card-soon reveal">
+            <span class="flag flag-lg"><svg aria-hidden="true"><use href="#flag-my"/></svg></span>
+            <span class="country-name">Malaysia</span><span class="country-meta">RM · DuitNow</span>
+            <span class="pill pill-soon">Coming soon</span>
+          </li>
+          <li class="country-card country-card-soon reveal">
+            <span class="flag flag-lg"><svg aria-hidden="true"><use href="#flag-sg"/></svg></span>
+            <span class="country-name">Singapore</span><span class="country-meta">S$</span>
+            <span class="pill pill-soon">Coming soon</span>
+          </li>
+          <li class="country-card country-card-soon reveal">
+            <span class="flag flag-lg"><svg aria-hidden="true"><use href="#flag-mx"/></svg></span>
+            <span class="country-name">Mexico</span><span class="country-meta">MX$ · CoDi</span>
+            <span class="pill pill-soon">Coming soon</span>
+          </li>
+          <li class="country-card country-card-soon reveal">
+            <span class="flag flag-lg"><svg aria-hidden="true"><use href="#flag-bo"/></svg></span>
+            <span class="country-name">Bolivia</span><span class="country-meta">Bs · QR payments</span>
+            <span class="pill pill-soon">Coming soon</span>
+          </li>
+          <li class="country-card country-card-soon reveal">
+            <span class="flag flag-lg"><svg aria-hidden="true"><use href="#flag-cl"/></svg></span>
+            <span class="country-name">Chile</span><span class="country-meta">CLP</span>
+            <span class="pill pill-soon">Coming soon</span>
+          </li>
+          <li class="country-card country-card-soon reveal">
+            <span class="flag flag-lg"><svg aria-hidden="true"><use href="#flag-ec"/></svg></span>
+            <span class="country-name">Ecuador</span><span class="country-meta">US$</span>
+            <span class="pill pill-soon">Coming soon</span>
+          </li>
+        </ul>
+
+        <div class="vote-box reveal">
+          <h3 class="vote-title">Where are you travelling next?</h3>
+          <p class="vote-sub">We launch next where our members are going.</p>
+          <div class="chip-row" role="group" aria-label="Pick your next destination" data-vote>
+            <button class="chip" type="button" data-country="Thailand" aria-pressed="false">Thailand</button>
+            <button class="chip" type="button" data-country="Vietnam" aria-pressed="false">Vietnam</button>
+            <button class="chip" type="button" data-country="Philippines" aria-pressed="false">Philippines</button>
+            <button class="chip" type="button" data-country="Indonesia" aria-pressed="false">Indonesia</button>
+            <button class="chip" type="button" data-country="Cambodia" aria-pressed="false">Cambodia</button>
+            <button class="chip" type="button" data-country="Malaysia" aria-pressed="false">Malaysia</button>
+            <button class="chip" type="button" data-country="Singapore" aria-pressed="false">Singapore</button>
+            <button class="chip" type="button" data-country="Brazil" aria-pressed="false">Brazil</button>
+            <button class="chip" type="button" data-country="Argentina" aria-pressed="false">Argentina</button>
+            <button class="chip" type="button" data-country="Colombia" aria-pressed="false">Colombia</button>
+            <button class="chip" type="button" data-country="Peru" aria-pressed="false">Peru</button>
+            <button class="chip" type="button" data-country="Mexico" aria-pressed="false">Mexico</button>
+            <button class="chip" type="button" data-country="Somewhere else" aria-pressed="false">Somewhere else</button>
+          </div>
+          <p class="vote-confirm" data-vote-confirm hidden></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 6. Nothing hidden ============ -->
+    <section class="section section-dark" aria-labelledby="honest-title">
+      <div class="container band-split">
+        <div class="band-copy">
+          <p class="eyebrow eyebrow-light reveal">Nothing hidden</p>
+          <h2 class="section-title reveal" id="honest-title">The rate, the fee, the amount. Same screen.</h2>
+          <p class="band-text reveal">
+            We show you the exchange rate and the fee on the same screen as the
+            amount, before you confirm. Not on your statement three days later.
+          </p>
+        </div>
+        <div class="phone-wrap reveal">
+          <div class="phone">
+            <img src="app-paymentpage.png" loading="lazy" width="1080" height="2400"
+                 alt="Valuto confirm payment screen: 50,000 dong at Phở Hòa, you'll pay $2.22 — the exchange rate, amount, and fee all shown before you swipe to pay">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 7. Scams that can't happen ============ -->
+    <section class="section" id="safety" aria-labelledby="safety-title">
+      <div class="container">
+        <p class="eyebrow reveal">Safer by design</p>
+        <h2 class="section-title reveal" id="safety-title">Scams that simply can&rsquo;t happen</h2>
+        <p class="section-sub reveal">
+          Paying by QR doesn&rsquo;t just skip the fees. No card, no PIN, and no cash
+          also means the oldest travel scams have nothing to work with.
+        </p>
+
+        <ul class="scam-grid reveal reveal-stagger">
+          <li class="scam-card">
+            <span class="scam-icon" aria-hidden="true">
+              <svg class="scam-icon-base"><use href="#i-card"/></svg>
+              <svg class="scam-cross" viewBox="0 0 24 24"><line x1="3.5" y1="20.5" x2="20.5" y2="3.5" pathLength="100"/></svg>
+            </span>
+            <h3>ATM &amp; card skimming</h3>
+            <p>No magnetic strip or chip ever goes into a machine — so a tampered
+               ATM or card terminal has nothing to clone.</p>
+          </li>
+          <li class="scam-card">
+            <span class="scam-icon" aria-hidden="true">
+              <svg class="scam-icon-base"><use href="#i-eye"/></svg>
+              <svg class="scam-cross" viewBox="0 0 24 24"><line x1="3.5" y1="20.5" x2="20.5" y2="3.5" pathLength="100"/></svg>
+            </span>
+            <h3>Shoulder surfing</h3>
+            <p>You never type your card PIN on a shop keypad where bystanders or a
+               hidden camera can watch. Every payment is approved on your own phone.</p>
+          </li>
+          <li class="scam-card">
+            <span class="scam-icon" aria-hidden="true">
+              <svg class="scam-icon-base"><use href="#i-db"/></svg>
+              <svg class="scam-cross" viewBox="0 0 24 24"><line x1="3.5" y1="20.5" x2="20.5" y2="3.5" pathLength="100"/></svg>
+            </span>
+            <h3>Data breach theft</h3>
+            <p>The merchant only receives a payment confirmation — never your card
+               number or banking details. If their system leaks, nothing of yours is in it.</p>
+          </li>
+          <li class="scam-card">
+            <span class="scam-icon" aria-hidden="true">
+              <svg class="scam-icon-base"><use href="#i-cash"/></svg>
+              <svg class="scam-cross" viewBox="0 0 24 24"><line x1="3.5" y1="20.5" x2="20.5" y2="3.5" pathLength="100"/></svg>
+            </span>
+            <h3>Cash short-changing</h3>
+            <p>You pay the exact amount on the screen, in their currency. No notes
+               handed over, no change counted back wrong on purpose.</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ============ 8. Founding 1,000 ============ -->
+    <section class="section" id="join" aria-labelledby="join-title">
+      <div class="container container-narrow">
+        <div class="join-card reveal">
+          <p class="eyebrow">Founding 1,000</p>
+          <h2 class="section-title" id="join-title">Be one of the first 1,000.</h2>
+          <p class="join-sub">
+            Founding members pay no Valuto fee on their first 10 payments, get access
+            before public launch, and help decide which country we open next.
+          </p>
+
+          <div class="spots" data-spots>
+            <div class="spots-bar" aria-hidden="true"><span class="spots-fill" data-spots-fill></span></div>
+            <p class="spots-label"><strong data-spots-count>—</strong> founding spots left</p>
+          </div>
+
+          <form class="waitlist-form waitlist-form-stacked" data-waitlist novalidate>
+            <div class="field-row">
+              <label class="visually-hidden" for="join-email">Email address</label>
+              <input class="input" type="email" id="join-email" name="email" required
+                     autocomplete="email" placeholder="you@wherever.com" inputmode="email">
+            </div>
+            <div class="field-row">
+              <label class="field-label" for="join-destination">Where are you travelling next? <span class="field-optional">(optional)</span></label>
+              <select class="input select" id="join-destination" name="destination" data-dest-select>
+                <option value="">Pick a destination</option>
+                <option>Thailand</option>
+                <option>Vietnam</option>
+                <option>Philippines</option>
+                <option>Indonesia</option>
+                <option>Cambodia</option>
+                <option>Malaysia</option>
+                <option>Singapore</option>
+                <option>Brazil</option>
+                <option>Argentina</option>
+                <option>Colombia</option>
+                <option>Peru</option>
+                <option>Bolivia</option>
+                <option>Chile</option>
+                <option>Ecuador</option>
+                <option>Mexico</option>
+                <option>Somewhere else</option>
+              </select>
+            </div>
+            <button class="btn btn-coral btn-wide" type="submit">Claim my spot</button>
+          </form>
+
+          <p class="referral-line">Share your link and move up the list.</p>
+          <p class="footnote">
+            Fee-free applies to Valuto&rsquo;s service fee on payments up to $50 each.
+            Exchange rates still apply.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 8. FAQ ============ -->
+    <section class="section section-tinted" id="faq" aria-labelledby="faq-title">
+      <div class="container container-narrow">
+        <p class="eyebrow reveal">Questions</p>
+        <h2 class="section-title reveal" id="faq-title">FAQ</h2>
+        <div class="faq-list">
+          <details class="faq-item reveal">
+            <summary>Is my money safe?</summary>
+            <p>Your balance stays under your control, and every payment needs your approval.
+               Payment services are provided by licensed partners.</p>
+          </details>
+          <details class="faq-item reveal">
+            <summary>Do merchants need to sign up?</summary>
+            <p>No. Valuto works with the QR codes they already accept.</p>
+          </details>
+          <details class="faq-item reveal">
+            <summary>What does it cost?</summary>
+            <p>Around 2% all-in — roughly a third of what a typical bank card costs abroad.
+               You&rsquo;ll always see the exact amount before you confirm.</p>
+          </details>
+          <details class="faq-item reveal">
+            <summary>When do you launch?</summary>
+            <p>Founding members get access first. Join the waitlist and we&rsquo;ll email you.</p>
+          </details>
+          <details class="faq-item reveal">
+            <summary>Which countries?</summary>
+            <p>See the list above. We prioritise new markets based on where members tell
+               us they&rsquo;re going.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 9. Final CTA ============ -->
+    <section class="section final-cta" aria-labelledby="final-title">
+      <div class="container">
+        <h2 class="final-title reveal" id="final-title">Stop tipping your bank<br>every time you travel.</h2>
+        <a class="btn btn-coral btn-large reveal" href="#join">Join the waitlist</a>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============ Footer ============ -->
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <a class="wordmark" href="#top">
+          <img class="wordmark-u" src="valuto-logo.webp" alt="" width="30" height="30">
+          <span>Valuto</span>
+        </a>
+        <p class="footer-tagline">Pay like a Local</p>
+        <p class="footer-line">Spend your money like you live there.</p>
+        <ul class="social-row" aria-label="Valuto on social media — @getvaluto everywhere">
+          <li><a href="https://x.com/getvaluto" aria-label="Valuto on X"><svg><use href="#s-x"/></svg></a></li>
+          <li><a href="https://instagram.com/getvaluto" aria-label="Valuto on Instagram"><svg><use href="#s-instagram"/></svg></a></li>
+          <li><a href="https://tiktok.com/@getvaluto" aria-label="Valuto on TikTok"><svg><use href="#s-tiktok"/></svg></a></li>
+          <li><a href="https://youtube.com/@getvaluto" aria-label="Valuto on YouTube"><svg><use href="#s-youtube"/></svg></a></li>
+          <li><a href="https://facebook.com/getvaluto" aria-label="Valuto on Facebook"><svg><use href="#s-facebook"/></svg></a></li>
+          <li><a href="https://threads.net/@getvaluto" aria-label="Valuto on Threads"><svg><use href="#s-threads"/></svg></a></li>
+        </ul>
+      </div>
+      <nav class="footer-col" aria-label="Product">
+        <h3>Product</h3>
+        <a href="#how">How it works</a>
+        <a href="#where">Where it works</a>
+        <a href="#join">Waitlist</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+      <nav class="footer-col" aria-label="Company">
+        <h3>Company</h3>
+        <a href="#">About</a>
+        <a href="mailto:hello@getvaluto.com">Contact</a>
+      </nav>
+      <nav class="footer-col" aria-label="Legal">
+        <h3>Legal</h3>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+      </nav>
+    </div>
+    <div class="container footer-bottom">
+      <p>&copy; 2026 Gevelopers LLC. Valuto is a technology provider, not a bank.
+         Payment services are provided by licensed partners.</p>
+    </div>
+  </footer>
+
+  <script src="script.js?v=2"></script>
+</body>
+</html>
