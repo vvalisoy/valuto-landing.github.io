@@ -51,12 +51,14 @@ const DISPOSABLE_EMAIL_DOMAINS = new Set([
 /* ----- Receipt comparison data ---------------------------------------------
    Illustrative mid-market rates, hardcoded on purpose (static site). */
 const DESTINATIONS = {
-  th: { name: 'Thailand', city: 'Bangkok', rate: 36, symbol: '฿', position: 'suffix', decimals: 0 },
   vn: { name: 'Vietnam', city: 'Hanoi', rate: 25400, symbol: '₫', position: 'suffix', decimals: 0 },
   ph: { name: 'Philippines', city: 'Manila', rate: 58, symbol: '₱', position: 'prefix', decimals: 0 },
   br: { name: 'Brazil', city: 'Rio', rate: 5.4, symbol: 'R$ ', position: 'prefix', decimals: 2 },
+  co: { name: 'Colombia', city: 'Bogotá', rate: 4100, symbol: 'COL$ ', position: 'prefix', decimals: 0 },
   ar: { name: 'Argentina', city: 'Buenos Aires', rate: 1350, symbol: 'AR$ ', position: 'prefix', decimals: 0 },
+  pe: { name: 'Peru', city: 'Lima', rate: 3.75, symbol: 'S/ ', position: 'prefix', decimals: 2 },
 };
+
 
 const BANK_FX_MARKUP = 0.025; // hidden in the exchange rate
 const BANK_TXN_FEE = 0.03;    // foreign transaction fee
@@ -104,7 +106,7 @@ function animateUSD(el, to, prefix = '') {
 
 const widget = document.querySelector('[data-widget]');
 
-const state = { dest: 'th', usd: 3, item: 'Coffee' };
+const state = { dest: 'vn', usd: 3, item: 'Coffee' };
 
 function setAll(name, fn) {
   widget.querySelectorAll('[data-r="' + name + '"]').forEach(fn);

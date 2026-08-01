@@ -75,6 +75,11 @@
         <rect width="20" height="7" fill="#ffdd00"/><rect y="7" width="20" height="3.5" fill="#034ea2"/><rect y="10.5" width="20" height="3.5" fill="#ed1c24"/>
         <circle cx="10" cy="7" r="1.8" fill="#d9b23c"/>
       </symbol>
+      <symbol id="flag-mx" viewBox="0 0 20 14">
+        <rect width="20" height="14" fill="#fff"/>
+        <rect width="6.67" height="14" fill="#006847"/><rect x="13.33" width="6.67" height="14" fill="#ce1126"/>
+        <circle cx="10" cy="7" r="1.6" fill="#8a6d3b"/>
+      </symbol>
 
       <!-- UI icons -->
       <symbol id="i-check" viewBox="0 0 20 20">
@@ -269,10 +274,7 @@
         <div class="hero-widget reveal" data-widget>
           <div class="widget-controls">
             <div class="chip-row" role="group" aria-label="Pick a destination">
-              <button class="chip is-selected" type="button" data-dest="th" aria-pressed="true">
-                <span class="flag"><svg aria-hidden="true"><use href="#flag-th"/></svg></span>Thailand
-              </button>
-              <button class="chip" type="button" data-dest="vn" aria-pressed="false">
+              <button class="chip is-selected" type="button" data-dest="vn" aria-pressed="true">
                 <span class="flag"><svg aria-hidden="true"><use href="#flag-vn"/></svg></span>Vietnam
               </button>
               <button class="chip" type="button" data-dest="ph" aria-pressed="false">
@@ -281,8 +283,14 @@
               <button class="chip" type="button" data-dest="br" aria-pressed="false">
                 <span class="flag"><svg aria-hidden="true"><use href="#flag-br"/></svg></span>Brazil
               </button>
+              <button class="chip" type="button" data-dest="co" aria-pressed="false">
+                <span class="flag"><svg aria-hidden="true"><use href="#flag-co"/></svg></span>Colombia
+              </button>
               <button class="chip" type="button" data-dest="ar" aria-pressed="false">
                 <span class="flag"><svg aria-hidden="true"><use href="#flag-ar"/></svg></span>Argentina
+              </button>
+              <button class="chip" type="button" data-dest="pe" aria-pressed="false">
+                <span class="flag"><svg aria-hidden="true"><use href="#flag-pe"/></svg></span>Peru
               </button>
             </div>
             <div class="chip-row" role="group" aria-label="Pick a purchase">
@@ -297,7 +305,7 @@
               <article class="receipt receipt-bank" aria-label="What your bank card charges">
                 <p class="receipt-head" style="--i:0">Your bank card</p>
                 <ul class="receipt-lines">
-                  <li style="--i:1"><span data-r="item">Coffee — Bangkok</span><span class="receipt-num" data-r="local">108 ฿</span></li>
+                  <li style="--i:1"><span data-r="item">Coffee — Hanoi</span><span class="receipt-num" data-r="local">76,200 ₫</span></li>
                   <li style="--i:2"><span>Mid-market value</span><span class="receipt-num" data-r="mid-bank">$3.00</span></li>
                   <li class="receipt-bad" style="--i:3">
                     <span>FX markup (2.5%)<small>hidden in the rate</small></span>
@@ -322,7 +330,7 @@
                   <svg class="receipt-qr" aria-hidden="true"><use href="#i-qr"/></svg>Valuto
                 </p>
                 <ul class="receipt-lines">
-                  <li style="--i:2"><span data-r="item">Coffee — Bangkok</span><span class="receipt-num" data-r="local">108 ฿</span></li>
+                  <li style="--i:2"><span data-r="item">Coffee — Hanoi</span><span class="receipt-num" data-r="local">76,200 ₫</span></li>
                   <li style="--i:3"><span>Mid-market value</span><span class="receipt-num" data-r="mid-valuto">$3.00</span></li>
                   <li style="--i:4">
                     <span>Valuto fee (2%)<small>shown before you confirm</small></span>
@@ -458,23 +466,13 @@
         <h3 class="country-group-title reveal">Live at launch</h3>
         <ul class="country-grid">
           <li class="country-card reveal">
-            <span class="flag flag-lg"><svg aria-hidden="true"><use href="#flag-ph"/></svg></span>
-            <span class="country-name">Philippines</span><span class="country-meta">₱ · QR Ph</span>
-            <span class="pill pill-live">Live at launch</span>
-          </li>
-          <li class="country-card reveal">
             <span class="flag flag-lg"><svg aria-hidden="true"><use href="#flag-vn"/></svg></span>
             <span class="country-name">Vietnam</span><span class="country-meta">₫ · VietQR</span>
             <span class="pill pill-live">Live at launch</span>
           </li>
           <li class="country-card reveal">
-            <span class="flag flag-lg"><svg aria-hidden="true"><use href="#flag-th"/></svg></span>
-            <span class="country-name">Thailand</span><span class="country-meta">฿ · PromptPay</span>
-            <span class="pill pill-live">Live at launch</span>
-          </li>
-          <li class="country-card reveal">
-            <span class="flag flag-lg"><svg aria-hidden="true"><use href="#flag-kh"/></svg></span>
-            <span class="country-name">Cambodia</span><span class="country-meta">៛ · KHQR</span>
+            <span class="flag flag-lg"><svg aria-hidden="true"><use href="#flag-ph"/></svg></span>
+            <span class="country-name">Philippines</span><span class="country-meta">₱ · QR Ph</span>
             <span class="pill pill-live">Live at launch</span>
           </li>
           <li class="country-card reveal">
@@ -483,13 +481,13 @@
             <span class="pill pill-live">Live at launch</span>
           </li>
           <li class="country-card reveal">
-            <span class="flag flag-lg"><svg aria-hidden="true"><use href="#flag-ar"/></svg></span>
-            <span class="country-name">Argentina</span><span class="country-meta">AR$ · Mercado Pago</span>
+            <span class="flag flag-lg"><svg aria-hidden="true"><use href="#flag-co"/></svg></span>
+            <span class="country-name">Colombia</span><span class="country-meta">COP · QR payments</span>
             <span class="pill pill-live">Live at launch</span>
           </li>
           <li class="country-card reveal">
-            <span class="flag flag-lg"><svg aria-hidden="true"><use href="#flag-co"/></svg></span>
-            <span class="country-name">Colombia</span><span class="country-meta">COP · QR payments</span>
+            <span class="flag flag-lg"><svg aria-hidden="true"><use href="#flag-ar"/></svg></span>
+            <span class="country-name">Argentina</span><span class="country-meta">AR$ · Mercado Pago</span>
             <span class="pill pill-live">Live at launch</span>
           </li>
           <li class="country-card reveal">
@@ -497,15 +495,20 @@
             <span class="country-name">Peru</span><span class="country-meta">S/ · QR payments</span>
             <span class="pill pill-live">Live at launch</span>
           </li>
-          <li class="country-card reveal">
-            <span class="flag flag-lg"><svg aria-hidden="true"><use href="#flag-bo"/></svg></span>
-            <span class="country-name">Bolivia</span><span class="country-meta">Bs · QR payments</span>
-            <span class="pill pill-live">Live at launch</span>
-          </li>
         </ul>
 
         <h3 class="country-group-title reveal">Coming soon</h3>
         <ul class="country-grid">
+          <li class="country-card country-card-soon reveal">
+            <span class="flag flag-lg"><svg aria-hidden="true"><use href="#flag-th"/></svg></span>
+            <span class="country-name">Thailand</span><span class="country-meta">฿ · PromptPay</span>
+            <span class="pill pill-soon">Coming soon</span>
+          </li>
+          <li class="country-card country-card-soon reveal">
+            <span class="flag flag-lg"><svg aria-hidden="true"><use href="#flag-kh"/></svg></span>
+            <span class="country-name">Cambodia</span><span class="country-meta">៛ · KHQR</span>
+            <span class="pill pill-soon">Coming soon</span>
+          </li>
           <li class="country-card country-card-soon reveal">
             <span class="flag flag-lg"><svg aria-hidden="true"><use href="#flag-id"/></svg></span>
             <span class="country-name">Indonesia</span><span class="country-meta">Rp · QRIS</span>
@@ -519,6 +522,16 @@
           <li class="country-card country-card-soon reveal">
             <span class="flag flag-lg"><svg aria-hidden="true"><use href="#flag-sg"/></svg></span>
             <span class="country-name">Singapore</span><span class="country-meta">S$</span>
+            <span class="pill pill-soon">Coming soon</span>
+          </li>
+          <li class="country-card country-card-soon reveal">
+            <span class="flag flag-lg"><svg aria-hidden="true"><use href="#flag-mx"/></svg></span>
+            <span class="country-name">Mexico</span><span class="country-meta">MX$ · CoDi</span>
+            <span class="pill pill-soon">Coming soon</span>
+          </li>
+          <li class="country-card country-card-soon reveal">
+            <span class="flag flag-lg"><svg aria-hidden="true"><use href="#flag-bo"/></svg></span>
+            <span class="country-name">Bolivia</span><span class="country-meta">Bs · QR payments</span>
             <span class="pill pill-soon">Coming soon</span>
           </li>
           <li class="country-card country-card-soon reveal">
@@ -548,6 +561,7 @@
             <button class="chip" type="button" data-country="Argentina" aria-pressed="false">Argentina</button>
             <button class="chip" type="button" data-country="Colombia" aria-pressed="false">Colombia</button>
             <button class="chip" type="button" data-country="Peru" aria-pressed="false">Peru</button>
+            <button class="chip" type="button" data-country="Mexico" aria-pressed="false">Mexico</button>
             <button class="chip" type="button" data-country="Somewhere else" aria-pressed="false">Somewhere else</button>
           </div>
           <p class="vote-confirm" data-vote-confirm hidden></p>
@@ -666,6 +680,7 @@
                 <option>Bolivia</option>
                 <option>Chile</option>
                 <option>Ecuador</option>
+                <option>Mexico</option>
                 <option>Somewhere else</option>
               </select>
             </div>
